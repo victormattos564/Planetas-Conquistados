@@ -1,6 +1,6 @@
 const Sobre = [{
 
-  Img: require('../../assets/eu.jpg'),
+  Img: require('../../assets/victor.jpg'),
   name: "Victor Hugo Mattos",
   age: "Tenho 17 anos de idade",
   curso: "Estudante Do Curso Desenvolvimento de sistemas",

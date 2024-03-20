@@ -12,7 +12,7 @@ export default function Profile() {
 
           Sobre.map((item, index) => (
             <View key={index} style={styles.divtudo}>
-              <Image source={item.img} style={styles.img} />
+              <Image source={item.img} style={styles.imagem} />
               <Text style={styles.title1}>{item.name}</Text>
               <Text style={styles.title2}>{item.age}</Text>
               <Text style={styles.title3}>{item.curso}</Text>
