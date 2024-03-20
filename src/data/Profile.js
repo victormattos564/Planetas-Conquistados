@@ -1,9 +1,11 @@
-export const user = {
-  name: "Felipe Santos",
-  email: "felipesantos@dev.com",
-  phone: "1999999999",
-  address: {
-    city: "Valinhos",
-    state: "São Paulo",
-  },
-};
+const Sobre = [{
+
+  Img: require('../../assets/eu.jpg'),
+  name: "Victor Hugo Mattos",
+  age: "Tenho 17 anos de idade",
+  curso: "Estudante Do Curso Desenvolvimento de sistemas",
+  email: "Victorhmmaria@Gmail.com",
+  descricao: "Sou um aluno do SENAI Valinhos cursando Desenvolvimento de Sistemas e, até o momento, estou completamente satisfeito com a experiência."
+}];
+
+export default Sobre;

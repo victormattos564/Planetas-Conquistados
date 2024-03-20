@@ -14,7 +14,7 @@ export default function Home() {
 
       <TouchButton route="Category" title="Go to Category" />
 
-      <TouchButton route="Users" title="Go to Users" />
+      <TouchButton route="Users" title="Go to Users"  />
     </View>
   );
 }
