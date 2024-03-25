@@ -1,32 +1,30 @@
-import { View, Text, ScrollView, Image } from 'react-native'
-import styles from './styles'
-import Title from '../../components/Title'
+import { Text, View, Image } from "react-native";
 
-import Sobre from '../../data/Profile'
+import styles from "./styles";
+import Title from "../../components/Title";
+import TouchButton from "../../components/TouchButton";
 
-export default function Profile() {
+export default function Profile({ route }) {
+  const { data } = route.params;
+  const Img = data.Img;
+
   return (
-    <View style={styles.div1}>
-      <ScrollView>
-        {Sobre ? (
+    <View style={styles.container}>
+      <Title title="Profile" />
 
-          Sobre.map((item, index) => (
-            <View key={index} style={styles.divtudo}>
-              <Image source={item.img} style={styles.imagem} />
-              <Text style={styles.title1}>{item.name}</Text>
-              <Text style={styles.title2}>{item.age}</Text>
-              <Text style={styles.title3}>{item.curso}</Text>
-              <Text style={styles.title4}>{item.email}</Text>
-              <Text style={styles.title5}>{item.descricao}</Text>
-            </View>
-          ))
-        ) : (
-          <Text style={styles.title6}>Nenhum Perfil cadastrado</Text>
-        )}
-
-      </ScrollView>
-
-
+      <View style={styles.user}>
+        <Text style={styles.name}>{data.name}</Text>
+        <View style={styles.line} />
+        <View style={styles.flex}>
+          <Image style={styles.Img} source={Img} />
+          <View>
+            <Text style={styles.text}>{data.email}</Text>
+            <Text style={styles.text}>{data.phone}</Text>
+            <Text style={styles.text}>{data.address.city}</Text>
+            <Text style={styles.text}>{data.address.state}</Text>
+          </View>
+        </View>
+      </View>
     </View>
-  )
+  );
 }

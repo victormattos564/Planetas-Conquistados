@@ -3,7 +3,6 @@ import { Feather } from "@expo/vector-icons";
 
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
-import Category from "../screens/Category";
 import { user } from "../data/Profile";
 
 const Drawer = createDrawerNavigator();
@@ -46,7 +45,7 @@ const DrawerRoutes = () => {
           drawerInactiveTintColor: "#D6D6D6",
         }}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Category"
         component={Category}
         options={{
@@ -62,7 +61,7 @@ const DrawerRoutes = () => {
           drawerActiveTintColor: "#131313",
           drawerInactiveTintColor: "#D6D6D6",
         }}
-      />
+      /> */}
     </Drawer.Navigator>
   );
 };

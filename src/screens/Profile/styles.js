@@ -1,62 +1,52 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    div1: {
+  container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 16,
-    backgroundColor: 'black',
+    backgroundColor: "#000000",
+    padding: 20,
+    justifyContent: "center",
   },
-  imagem: {
-    width: 100,
-    height: 100,
+  user: {
+    backgroundColor: "#999999",
+    borderRadius: 50,
+    padding: 40,
+    marginBottom: 20,
+  },
+  name: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#FFFFFF",
+    marginBottom: 20,
+    textShadowColor: "#000000",
+    textShadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    textShadowRadius: 5,
+  },
+  Img: {
+    width: 150,
+    height: 150,
     borderRadius: 30,
+    marginBottom: 30,
+  },
+  text: {
+    fontSize: 13,
+    color: "#FFFFFF",
+    marginBottom: 10,
+    marginLeft: 10,
+  },
+  line: {
+    height: 1,
+    backgroundColor: "#FFFFFF",
     marginBottom: 20,
-    alignSelf: 'center',
-
-   
   },
-  title1: {
-    textAlign: 'center',
-    fontSize: 26,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: 'white',
+  flex: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    display: "flex",
   },
-  title2: {
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    marginBottom: 20,
-    color: 'white',
-  },
-  title3: {
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    marginBottom: 20,
-    color: 'white',
-  },
-  title4: {
-    fontSize: 20,
-    textAlign: 'center',
-    marginBottom: 20,
-    color: 'white',
-  },
-  title5: {
-    fontSize: 16,
-    textAlign: 'center',
-    color: 'white',
-  },
-  title6: {
-    fontSize: 20,
-    color: 'white',
-  },
-  divtudo: {
-    marginTop:30,
-  },
-
 });
 
 export default styles;

@@ -8,7 +8,7 @@ const TouchButton = ({ route, title, data }) => {
   const navigation = useNavigation();
 
   return (
-    <View>
+    <View style={styles.fundo}>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate(route, { data })}

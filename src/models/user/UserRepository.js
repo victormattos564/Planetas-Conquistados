@@ -19,17 +19,13 @@ export default class UsersRepository {
     this.users = this.users.filter((user) => user.id !== id);
   }
 
-  update(id, planet, population, location, communication, conquista, primaryColor, secondaryColor) {
+  update(id, name, email, age) {
     const user = this.get(id);
 
     if (user) {
-      user.planet = planet;
-      user.conquista = conquista;
-      user.primaryColor = primaryColor;
-      user.secondaryColor = secondaryColor;
-      user.population = population;
-      user.location = location;
-      user.communication = communication;
+      user.name = name;
+      user.email = email;
+      user.age = age;
     }
     return user;
   }

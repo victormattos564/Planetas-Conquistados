@@ -1,126 +1,170 @@
 import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { FaTrash, FaPen } from "react-icons/fa";
 
 import styles from "./styles";
 import Title from "../../components/Title";
 import TouchButton from "../../components/TouchButton";
-import { user } from "../../data/Profile";
 
-import User from "../../models/user/User";
-import UsersRepository from "../../models/user/UserRepository";
+import Planet from "../../models/planet/Planet.js";
+import PlanetRepository from "../../models/planet/PlanetRepository";
 import { useNavigation } from "@react-navigation/native";
 
-const usersList = new UsersRepository();
+const planetsList = new PlanetRepository();
 
-let userId = 1; 
+let planetId = 1;
 
 export default function Users() {
   const navigation = useNavigation();
 
-  const [planet, setPlanet] = useState("");
-  const [conquista, setConquista] = useState("");
-  const [primaryColor, setPrimaryColor] = useState("");
-  const [secondaryColor, setSecondaryColor] = useState("");
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [color1, setColor1] = useState("");
+  const [color2, setColor2] = useState("");
   const [population, setPopulation] = useState("");
+  const [naturalResources, setNaturalResources] = useState("");
+  const [numberHumanSettlements, setNumberHumanSettlements] = useState("");
   const [location, setLocation] = useState("");
   const [communication, setCommunication] = useState("");
+  const [planetRuler, setPlanetRuler] = useState("");
 
-  const [allUsers, setAllUsers] = useState([]);
+  const [allPlanets, setAllPlanets] = useState([]);
 
-  const createUser = () => {
-    const newUser = new User(planet, population, location, communication, conquista, primaryColor, secondaryColor, userId++)
-
-    usersList.add(newUser);
-    setAllUsers(usersList.getAll());
+  const createPlanet = () => {
+    const planet = new Planet(
+      planetId++,
+      name,
+      date,
+      color1,
+      color2,
+      population,
+      naturalResources,
+      numberHumanSettlements,
+      location,
+      communication,
+      planetRuler
+    );
+    planetsList.add(planet);
+    setAllPlanets(planetsList.getAll());
 
     clearInputs();
+  };
 
-    return newUser;
+  const deletePlanet = (id) => {
+    planetsList.remove(id);
+    setAllPlanets(planetsList.getAll());
   };
 
   const clearInputs = () => {
-    setPlanet("");
-    setConquista("");
-    setPrimaryColor("");
-    setSecondaryColor("");
+    setName("");
+    setDate("");
+    setColor1("");
+    setColor2("");
     setPopulation("");
+    setNaturalResources("");
+    setNumberHumanSettlements("");
     setLocation("");
     setCommunication("");
+    setPlanetRuler("");
   };
 
   return (
     <View style={styles.container}>
-      <Title title="Users" />
-
-      <View>
+      <Title title="Create Planet" />
+      <View style={styles.form}>
         <TextInput
-          placeholder="Digite o Nome do Planeta"
-          style={styles.userInput}
-          onChangeText={setPlanet}
-          value={planet}
+          style={styles.input}
+          placeholder="Nome do Planeta"
+          value={name}
+          onChangeText={setName}
+          placeholderTextColor={styles.placeholder.color}
         />
         <TextInput
-          placeholder="Digite a Data da Conquista"
-          style={styles.userInput}
-          onChangeText={setConquista}
-          value={conquista}
+          style={styles.input}
+          placeholder="Data de Conquista"
+          value={date}
+          onChangeText={setDate}
           keyboardType="numeric"
+          placeholderTextColor={styles.placeholder.color}
         />
         <TextInput
-          placeholder="Digite a Cor Primaria do Planeta"
-          style={styles.userInput}
-          onChangeText={setPrimaryColor}
-          value={primaryColor}
+          style={styles.input}
+          placeholder="Color Primária"
+          value={color1}
+          onChangeText={setColor1}
+          placeholderTextColor={styles.placeholder.color}
         />
         <TextInput
-          placeholder="Digite a Cor Secundaria do Planeta"
-          style={styles.userInput}
-          onChangeText={setSecondaryColor}
-          value={secondaryColor}
+          style={styles.input}
+          placeholder="Color Secundária"
+          value={color2}
+          onChangeText={setColor2}
+          placeholderTextColor={styles.placeholder.color}
         />
         <TextInput
-          placeholder="Digite a População do Planeta"
-          style={styles.userInput}
-          onChangeText={setPopulation}
+          style={styles.input}
+          placeholder="População"
           value={population}
-          keyboardType="numeric"
+          onChangeText={setPopulation}
+          placeholderTextColor={styles.placeholder.color}
         />
         <TextInput
-          placeholder="Digite a Localização do Planeta"
-          style={styles.userInput}
-          onChangeText={setLocation}
+          style={styles.input}
+          placeholder="Recursos Naturais"
+          value={naturalResources}
+          onChangeText={setNaturalResources}
+          placeholderTextColor={styles.placeholder.color}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Número de assentamentos humanos"
+          value={numberHumanSettlements}
+          onChangeText={setNumberHumanSettlements}
+          placeholderTextColor={styles.placeholder.color}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Localização"
           value={location}
-          keyboardType="numeric"
+          onChangeText={setLocation}
+          placeholderTextColor={styles.placeholder.color}
         />
         <TextInput
-          placeholder="Digite a Comunicação do Planeta"
-          style={styles.userInput}
-          onChangeText={setCommunication}
+          style={styles.input}
+          placeholder="Comunicação"
           value={communication}
+          onChangeText={setCommunication}
+          placeholderTextColor={styles.placeholder.color}
         />
-
-        <TouchableOpacity style={styles.button} onPress={createUser}>
-          <Text>Criar Usuário</Text>
-        </TouchableOpacity>
+        <TextInput
+          style={styles.input}
+          placeholder="Governante do Planeta"
+          value={planetRuler}
+          onChangeText={setPlanetRuler}
+          placeholderTextColor={styles.placeholder.color}
+        />
       </View>
+      <TouchableOpacity style={styles.button} onPress={createPlanet}>
+        <Text>Create Planet</Text>
+      </TouchableOpacity>
 
-      <View>
-        {allUsers.length > 0 ? (
-          allUsers.map((user) => (
+      <View style={styles.listPlanets}>
+        {allPlanets.map((planet) => (
+          <View key={planet.id} style={styles.planet}>
+            <Text>{planet.name}</Text>
             <TouchableOpacity
-              key={user.id}
-              onPress={() => navigation.navigate("Profile", { data: user })}
+              onPress={() => {
+                navigation.navigate("Planets", { data: planet });
+              }}
             >
-              <Text>{user.name}</Text>
+              <Text>Details</Text>
             </TouchableOpacity>
-          ))
-        ) : (
-          <Text>Não há usuários cadastrados</Text>
-        )}
+            <TouchableOpacity onPress={deletePlanet(planet.id)}>
+              <FaTrash />
+            </TouchableOpacity>
+          </View>
+        ))}
       </View>
-
-      <TouchButton route="Category" title="Go to Category" />
-      <TouchButton route="Profile" title="Go to Profile" data={user} />
     </View>
   );
 }
