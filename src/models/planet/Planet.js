@@ -1,6 +1,5 @@
 export default class Planet {
   constructor(
-    id,
     name,
     dataDeConquista,
     color1,
@@ -12,7 +11,7 @@ export default class Planet {
     comunicacao,
     governanteDoPlaneta
   ) {
-    this.id = id;
+  this.id = this.genereteId();
     this.name = name;
     this.dataDeConquista = dataDeConquista;
     this.color1 = color1;
@@ -23,5 +22,8 @@ export default class Planet {
     this.localizacao = localizacao;
     this.comunicacao = comunicacao;
     this.governanteDoPlaneta = governanteDoPlaneta;
+  }
+  genereteId() {
+    return Math.floor(Math.random() * 1000);
   }
 }

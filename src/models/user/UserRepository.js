@@ -26,6 +26,7 @@ export default class UsersRepository {
       user.name = name;
       user.email = email;
       user.age = age;
+
     }
     return user;
   }
