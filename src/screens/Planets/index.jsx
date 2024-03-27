@@ -14,18 +14,19 @@ export default function Profile({ route }) {
       <View style={styles.planet}>
         <Text style={styles.planetName}>{data.name}</Text>
         <Text style={styles.detail}>
-          Date of Conquest: {data.dateOfConquist}
+          
+          Data de Conquista: {data.dataDeConquista}
         </Text>
-        <Text style={styles.detail}>Population: {data.population}</Text>
+        <Text style={styles.detail}>Populaçao: {data.populacao}</Text>
         <Text style={styles.detail}>
-          Natural Resources: {data.naturalResources}
+          Recursos Naturais: {data.recursosNaturais}
         </Text>
         <Text style={styles.detail}>
-          Number of Human Settlements: {data.numberHumanSettlements}
+          Numero De Assentos Humanos: {data.numeroDeAssentamentosHumanos}
         </Text>
-        <Text style={styles.detail}>Location: {data.location}</Text>
-        <Text style={styles.detail}>Communication: {data.communication}</Text>
-        <Text style={styles.detail}>Planet Ruler: {data.planetRuler}</Text>
+        <Text style={styles.detail}>Localizacão: {data.localizacao}</Text>
+        <Text style={styles.detail}>Comunicação: {data.comunicacao}</Text>
+        <Text style={styles.detail}>Governante Do Planeta: {data.governanteDoPlaneta}</Text>
       </View>
     </View>
   );

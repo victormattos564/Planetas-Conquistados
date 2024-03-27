@@ -21,7 +21,7 @@ const TabRoutes = () => {
             <Feather
               name="home"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#8899f4" : "#D6D6D6"}
             />
           ),
           tabBarLabel: "Inicial",
@@ -38,7 +38,7 @@ const TabRoutes = () => {
             <Feather
               name="user"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#8899f4" : "#D6D6D6"}
             />
           ),
           tabBarLabel: "Perfil",
@@ -56,7 +56,7 @@ const TabRoutes = () => {
             <Feather
               name="globe"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#8899f4" : "#D6D6D6"}
             />
           ),
           tabBarLabel: "Planetas",
@@ -73,7 +73,7 @@ const TabRoutes = () => {
             <Feather
               name="users"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#8899f4" : "#D6D6D6"}
             />
           ),
           tabBarLabel: "Usuários",

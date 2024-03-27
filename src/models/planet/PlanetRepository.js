@@ -22,29 +22,29 @@ export default class PlanetsRepository {
   update(
     id,
     name,
-    dateOfConquist,
+    dataDeConquista,
     color1,
     color2,
-    population,
-    naturalResources,
-    numberHumanSettlements,
-    location,
-    communication,
-    planetRuler
+    populacao,
+    recursosNaturais,
+    numeroDeAssentamentosHumanos,
+    localizacao,
+    comunicacao,
+    governanteDoPlaneta
   ) {
     const planet = this.get(id);
 
     if (planet) {
       planet.name = name;
-      planet.dateOfConquist = dateOfConquist;
+      planet.dataDeConquista = dataDeConquista;
       planet.color1 = color1;
       planet.color2 = color2;
-      planet.population = population;
-      planet.naturalResources = naturalResources;
-      planet.numberHumanSettlements = numberHumanSettlements;
-      planet.location = location;
-      planet.communication = communication;
-      planet.planetRuler = planetRuler;
+      planet.populacao = populacao;
+      planet.recursosNaturais = recursosNaturais;
+      planet.numeroDeAssentamentosHumanos = numeroDeAssentamentosHumanos;
+      planet.localizacao = localizacao;
+      planet.comunicacao = comunicacao;
+      planet.governanteDoPlaneta = governanteDoPlaneta;
     }
     return planet;
   }
