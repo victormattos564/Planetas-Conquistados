@@ -14,7 +14,7 @@ let planetId = 1;
 export default function Users() {
   const navigation = useNavigation();
 
-  const [editingPlanetName, setEditingPlanetName] = useState("");
+  const [editingPlanetId, setEditingPlanetId] = useState(null);
   const [namePlanet, setNamePlanet] = useState("");
   const [dataDeConquista, setDataDeConquista] = useState("");
   const [color1, setColor1] = useState("");
@@ -43,8 +43,8 @@ export default function Users() {
       return;
     }
 
-    if (editingPlanetName) {
-      const planetIndex = allPlanets.findIndex((planet) => planet.namePlanet === editingPlanetName);
+    if (editingPlanetId) {
+      const planetIndex = allPlanets.findIndex((planet) => planet.id === editingPlanetId);
       const updatedPlanets = [...allPlanets];
       updatedPlanets[planetIndex] = {
         ...updatedPlanets[planetIndex],
@@ -60,10 +60,9 @@ export default function Users() {
         governanteDoPlaneta,
       };
       setAllPlanets(updatedPlanets);
-      setEditingPlanetName("");
+      setEditingPlanetId(null);
     } else {
       const planet = new Planet(
-       
         namePlanet,
         dataDeConquista,
         color1,
@@ -73,22 +72,22 @@ export default function Users() {
         numeroDeAssentamentosHumanos,
         localizacao,
         comunicacao,
-        governanteDoPlaneta,
+        governanteDoPlaneta, 
         planetId++
       );
       planetsList.add(planet);
       setAllPlanets(planetsList.getAll());
     }
-    clearInputs(); 
+    clearInputs();
   };
 
-  const deletePlanet = (name) => {
-    planetsList.remove(name);
+  const deletePlanet = (id) => {
+    planetsList.remove(id);
     setAllPlanets(planetsList.getAll());
   };
 
-  const editPlanet = (name) => {
-    const planetToEdit = allPlanets.find((planet) => planet.namePlanet === name);
+  const editPlanet = (id) => {
+    const planetToEdit = allPlanets.find((planet) => planet.id === id);
     if (planetToEdit) {
       setNamePlanet(planetToEdit.namePlanet);
       setDataDeConquista(planetToEdit.dataDeConquista);
@@ -100,7 +99,7 @@ export default function Users() {
       setLocalizacao(planetToEdit.localizacao);
       setComunicacao(planetToEdit.comunicacao);
       setGovernanteDoPlaneta(planetToEdit.governanteDoPlaneta);
-      setEditingPlanetName(name);
+      setEditingPlanetId(id);
     }
   };
 
@@ -198,12 +197,12 @@ export default function Users() {
         />
       </View>
       <TouchableOpacity style={styles.button} onPress={createPlanet}>
-        <Text>{editingPlanetName ? "Atualizar Planeta🧹" : "Criar Planeta🪐"}</Text>
+        <Text>{editingPlanetId ? "Atualizar Planeta🧹" : "Criar Planeta🪐"}</Text>
       </TouchableOpacity>
 
       <View style={styles.listPlanets}>
         {allPlanets.map((planet) => (
-          <View key={planet.namePlanet} style={styles.planet}>
+          <View key={planet.id} style={styles.planet}>
             <Text>{planet.namePlanet}</Text>
             <TouchableOpacity
               onPress={() => {
@@ -212,8 +211,8 @@ export default function Users() {
             >
               <Text>Details</Text>
             </TouchableOpacity>
-            <FaTrash onClick={() => deletePlanet(planet.namePlanet)} />
-            <FaPen onClick={() => editPlanet(planet.namePlanet)} />
+            <FaTrash onClick={() => deletePlanet(planet.id)} />
+            <FaPen onClick={() => editPlanet(planet.id)} />
           </View>
         ))}
       </View>
