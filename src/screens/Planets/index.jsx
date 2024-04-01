@@ -9,10 +9,11 @@ export default function Profile({ route }) {
 
   return (
     <View style={styles.container}>
+         <Image style={styles.background} source={require("../../../assets/capa.jpg")} />
       <Title style={styles.title} title="Planets" />
 
       <View style={styles.planet}>
-        <Text style={styles.planetName}>{data.name}</Text>
+        <Text style={styles.planetName}>Nome do Planeta:{data.namePlanet}</Text>
         <Text style={styles.detail}>
           
           Data de Conquista: {data.dataDeConquista}

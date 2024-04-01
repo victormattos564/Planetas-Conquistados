@@ -1,7 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import { FaTrash, FaPen } from "react-icons/fa";
-
 import styles from "./styles";
 import Title from "../../components/Title";
 import TouchButton from "../../components/TouchButton";
@@ -10,15 +9,13 @@ import PlanetRepository from "../../models/planet/PlanetRepository";
 import { useNavigation } from "@react-navigation/native";
 
 const planetsList = new PlanetRepository();
-
 let planetId = 1;
 
 export default function Users() {
   const navigation = useNavigation();
 
-  const [editingPlanetId, setEditingPlanetId] = useState(null); // State para armazenar o ID do planeta em edição
-
-  const [name, setName] = useState("");
+  const [editingPlanetName, setEditingPlanetName] = useState("");
+  const [namePlanet, setNamePlanet] = useState("");
   const [dataDeConquista, setDataDeConquista] = useState("");
   const [color1, setColor1] = useState("");
   const [color2, setColor2] = useState("");
@@ -31,13 +28,27 @@ export default function Users() {
   const [allPlanets, setAllPlanets] = useState([]);
 
   const createPlanet = () => {
-    if (editingPlanetId) {
-      // Se estiver editando, atualize o planeta existente
-      const planetIndex = allPlanets.findIndex(planet => planet.id === editingPlanetId);
+    if (
+      !namePlanet ||
+      !dataDeConquista ||
+      !color1 ||
+      !color2 ||
+      !populacao ||
+      !recursosNaturais ||
+      !numeroDeAssentamentosHumanos ||
+      !localizacao ||
+      !comunicacao ||
+      !governanteDoPlaneta
+    ) {
+      return;
+    }
+
+    if (editingPlanetName) {
+      const planetIndex = allPlanets.findIndex((planet) => planet.namePlanet === editingPlanetName);
       const updatedPlanets = [...allPlanets];
       updatedPlanets[planetIndex] = {
         ...updatedPlanets[planetIndex],
-        name,
+        namePlanet,
         dataDeConquista,
         color1,
         color2,
@@ -46,15 +57,14 @@ export default function Users() {
         numeroDeAssentamentosHumanos,
         localizacao,
         comunicacao,
-        governanteDoPlaneta
+        governanteDoPlaneta,
       };
       setAllPlanets(updatedPlanets);
-      setEditingPlanetId(null); // Resetando o estado de edição
+      setEditingPlanetName("");
     } else {
-      // Caso contrário, crie um novo planeta
       const planet = new Planet(
-        planetId++,
-        name,
+       
+        namePlanet,
         dataDeConquista,
         color1,
         color2,
@@ -63,23 +73,24 @@ export default function Users() {
         numeroDeAssentamentosHumanos,
         localizacao,
         comunicacao,
-        governanteDoPlaneta
+        governanteDoPlaneta,
+        planetId++
       );
       planetsList.add(planet);
       setAllPlanets(planetsList.getAll());
     }
-    clearInputs();
+    clearInputs(); 
   };
 
-  const deletePlanet = (id) => {
-    planetsList.remove(id);
+  const deletePlanet = (name) => {
+    planetsList.remove(name);
     setAllPlanets(planetsList.getAll());
   };
 
-  const editPlanet = (id) => {
-    const planetToEdit = allPlanets.find(planet => planet.id === id);
+  const editPlanet = (name) => {
+    const planetToEdit = allPlanets.find((planet) => planet.namePlanet === name);
     if (planetToEdit) {
-      setName(planetToEdit.name);
+      setNamePlanet(planetToEdit.namePlanet);
       setDataDeConquista(planetToEdit.dataDeConquista);
       setColor1(planetToEdit.color1);
       setColor2(planetToEdit.color2);
@@ -89,12 +100,12 @@ export default function Users() {
       setLocalizacao(planetToEdit.localizacao);
       setComunicacao(planetToEdit.comunicacao);
       setGovernanteDoPlaneta(planetToEdit.governanteDoPlaneta);
-      setEditingPlanetId(id);
+      setEditingPlanetName(name);
     }
   };
 
   const clearInputs = () => {
-    setName("");
+    setNamePlanet("");
     setDataDeConquista("");
     setColor1("");
     setColor2("");
@@ -114,8 +125,8 @@ export default function Users() {
         <TextInput
           style={styles.input}
           placeholder="Nome do Planeta"
-          value={name}
-          onChangeText={setName}
+          value={namePlanet}
+          onChangeText={setNamePlanet}
           placeholderTextColor={styles.placeholder.color}
         />
         <TextInput
@@ -187,13 +198,13 @@ export default function Users() {
         />
       </View>
       <TouchableOpacity style={styles.button} onPress={createPlanet}>
-        <Text>{editingPlanetId ? "Atualizar Planeta🧹" : "Criar Planeta🪐"}</Text>
+        <Text>{editingPlanetName ? "Atualizar Planeta🧹" : "Criar Planeta🪐"}</Text>
       </TouchableOpacity>
 
       <View style={styles.listPlanets}>
         {allPlanets.map((planet) => (
-          <View key={planet.id} style={styles.planet}>
-            <Text>{planet.name}</Text>
+          <View key={planet.namePlanet} style={styles.planet}>
+            <Text>{planet.namePlanet}</Text>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate("Planets", { data: planet });
@@ -201,8 +212,8 @@ export default function Users() {
             >
               <Text>Details</Text>
             </TouchableOpacity>
-            <FaTrash onClick={() => deletePlanet(planet.id)} />
-            <FaPen onClick={() => editPlanet(planet.id)} />
+            <FaTrash onClick={() => deletePlanet(planet.namePlanet)} />
+            <FaPen onClick={() => editPlanet(planet.namePlanet)} />
           </View>
         ))}
       </View>

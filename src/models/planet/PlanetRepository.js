@@ -21,7 +21,7 @@ export default class PlanetsRepository {
 
   update(
     id,
-    name,
+    namePlanet,
     dataDeConquista,
     color1,
     color2,
@@ -35,7 +35,7 @@ export default class PlanetsRepository {
     const planet = this.get(id);
 
     if (planet) {
-      planet.name = name;
+      planet.namePlanet = namePlanet;
       planet.dataDeConquista = dataDeConquista;
       planet.color1 = color1;
       planet.color2 = color2;

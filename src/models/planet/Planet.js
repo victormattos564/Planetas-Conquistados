@@ -1,6 +1,6 @@
 export default class Planet {
   constructor(
-    name,
+    namePlanet,
     dataDeConquista,
     color1,
     color2,
@@ -12,7 +12,7 @@ export default class Planet {
     governanteDoPlaneta
   ) {
   this.id = this.genereteId();
-    this.name = name;
+    this.namePlanet = namePlanet;
     this.dataDeConquista = dataDeConquista;
     this.color1 = color1;
     this.color2 = color2;
