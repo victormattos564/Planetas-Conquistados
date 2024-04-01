@@ -44,7 +44,7 @@ Este projeto está licenciado sob a [MIT License](LICENSE), o que significa que 
 ---
 
 Obrigado por utilizar o Conquistador de Planetas! Esperamos que você se divirta explorando o universo e conquistando novos mundos. Se gostar do jogo, não se esqueça de deixar uma estrela no repositório e compartilhá-lo com seus amigos! 🚀🌌
-```
+
 
 Você pode copiar e colar este código em um arquivo chamado `README.md` no seu repositório do GitHub e ele será renderizado como um README bem formatado.
 
