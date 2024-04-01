@@ -49,4 +49,6 @@ Obrigado por utilizar o Conquistador de Planetas! Esperamos que você se divirta
 Você pode copiar e colar este código em um arquivo chamado `README.md` no seu repositório do GitHub e ele será renderizado como um README bem formatado.
 
 
-![Imagem1](../Planetas-Conquista)
+![Imagem1](../Planetas-Conquistados/assets/Screenshot_1711992489.png)
+![Imagem1](../Planetas-Conquistados/assets/Screenshot_1711992494.png)
+![Imagem1](../Planetas-Conquistados/assets/Screenshot_1711992529.png)
