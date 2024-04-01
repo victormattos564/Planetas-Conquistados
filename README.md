@@ -1,4 +1,4 @@
-Claro! Aqui está o código completo do README.md:
+
 
 ```markdown
 # Conquistador de Planetas - Projeto no GitHub
