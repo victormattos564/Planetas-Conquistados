@@ -204,17 +204,17 @@ export default function Users() {
 
       <View style={styles.listPlanets}>
         {allPlanets.map((planets) => (
-          <View key={planets.id} style={styles.planet}>
+          <View key={planets.id} style={styles.planetCard}>
             <Text>{planets.namePlanet}</Text>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate("Planets", { data: planets });
               }}
             >
-              <Text>Details</Text>
+              <Text style={styles.detail}>Detalhes de Seu Planeta</Text>
             </TouchableOpacity>
-            <FaTrash onClick={() => deletePlanet(planets.id)} />
-            <FaPen onClick={() => editPlanet(planets.id)} />
+            <FaTrash onClick={() => deletePlanet(planets.id)}style={styles.buttonDelete}/>
+            <FaPen onClick={() => editPlanet(planets.id)} style={styles.buttonEdit} />
           </View>
         ))}
       </View>
