@@ -49,7 +49,7 @@ const TabRoutes = () => {
 
       <Tab.Screen
         name="Planets"
-        initialParams={{ data: NullsPlanet }}
+        initialParams={{ data: Planets }}
         component={Planets}
         options={{
           tabBarIcon: ({ focused }) => (

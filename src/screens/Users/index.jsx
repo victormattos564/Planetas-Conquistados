@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View, Image } from "react-native";
+import { Text, TextInput, TouchableOpacity, View, Image, ScrollView } from "react-native";
 import { FaTrash, FaPen } from "react-icons/fa";
 import styles from "./styles";
 import Title from "../../components/Title";
@@ -121,6 +121,7 @@ export default function Users() {
       <Title title="Criar Planeta" />
       <Image style={styles.background} source={require("../../../assets/capa.jpg")} />
       <View style={styles.form}>
+        <ScrollView>
         <TextInput
           style={styles.input}
           placeholder="Nome do Planeta"
@@ -195,24 +196,25 @@ export default function Users() {
           onChangeText={setGovernanteDoPlaneta}
           placeholderTextColor={styles.placeholder.color}
         />
+        </ScrollView>
       </View>
       <TouchableOpacity style={styles.button} onPress={createPlanet}>
         <Text>{editingPlanetId ? "Atualizar Planeta🧹" : "Criar Planeta🪐"}</Text>
       </TouchableOpacity>
 
       <View style={styles.listPlanets}>
-        {allPlanets.map((planet) => (
-          <View key={planet.id} style={styles.planet}>
-            <Text>{planet.namePlanet}</Text>
+        {allPlanets.map((planets) => (
+          <View key={planets.id} style={styles.planet}>
+            <Text>{planets.namePlanet}</Text>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("Planets", { data: planet });
+                navigation.navigate("Planets", { data: planets });
               }}
             >
               <Text>Details</Text>
             </TouchableOpacity>
-            <FaTrash onClick={() => deletePlanet(planet.id)} />
-            <FaPen onClick={() => editPlanet(planet.id)} />
+            <FaTrash onClick={() => deletePlanet(planets.id)} />
+            <FaPen onClick={() => editPlanet(planets.id)} />
           </View>
         ))}
       </View>
