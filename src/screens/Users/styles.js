@@ -34,8 +34,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#FFFFFF",
   },
-  list: {
-    width: "80%",
+  listPlanets: {
+    flexDirection: "row",
+    marginVertical: 8,
+    marginHorizontal: 16,
+    marginLeft: 0,  
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 16,
+    borderRadius: 8,
+    display: "flex",
   },
   item: {
     padding: 16,
@@ -80,7 +88,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF", 
     borderRadius: 24, 
     padding: 32, 
-    width: "90%",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
