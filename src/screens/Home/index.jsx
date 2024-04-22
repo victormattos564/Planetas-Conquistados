@@ -12,10 +12,10 @@ export default function Home() {
       <Title title="Home" />
       <Image style={styles.background} source={require("../../../assets/capa.jpg")} />
       <View>
-        <Text style={styles.text}>Bem-vindo, {user.name}!</Text>
-        <Text style={styles.text}>Você está logado como {user.role}.</Text>
-        <Text style={styles.text}>Email: {user.email}</Text>
-        <Text style={styles.text}>Data de Registro: {user.register}</Text>
+        <Text style={styles.text}>Bem-vindo, Viajante!</Text>
+        <Text style={styles.text}>Você está logado como Conquistador de Planetas</Text>
+        <Text style={styles.text}>Email: ConquistadorPlanet@gmail.com</Text>
+        <Text style={styles.text}>Data de Registro: Hoje </Text>
         <Text style={styles.text}>Nível de Acesso: {user.level}</Text>
        
       </View>
